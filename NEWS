@@ -1,0 +1,29 @@
+Version 1.2 (2022-07-12)
+========================
+
+=> Minimum SDK version: 1.5.0 <=
+
+* improved error reporting
+* fixed transfer error occuring when the resources to transfer did not fit inside the
+  plugin cache (512 MB by default).  The error generated high CPU usage on the sending side
+  while compressing large files instead of a simple bucket and in NetworkProtocolError
+  on the receiving side.
+
+Version 1.1 (2022-06-22)
+========================
+
+* Added "Resources" and "Originator" in the jobs "Content".  "Resources"
+  is copied directly from the query that created the job.
+* Support of dynamic linking against the system-wide Orthanc framework library
+
+
+Version 1.0 (2019-03-04)
+========================
+
+* Initial release
+
+
+2018-09-17
+==========
+
+* Initial publication of the source code
