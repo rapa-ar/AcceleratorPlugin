@@ -369,6 +369,8 @@ void StorePush(OrthancPluginRestOutput* output,
     (transaction, chunkIndex, request->body, request->bodySize);
 
   std::string s = "{}";
+  std::string id = "TEST-TRANSFERID-FORTESTING";
+  OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "TransferID", id.c_str());
   OrthancPluginAnswerBuffer(OrthancPlugins::GetGlobalContext(), output, s.c_str(), s.size(), "application/json");
 }
 
