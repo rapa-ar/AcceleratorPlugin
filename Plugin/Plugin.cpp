@@ -332,6 +332,9 @@ void CreatePush(OrthancPluginRestOutput* output,
   result[KEY_ID] = id;
   result[KEY_PATH] = std::string(URI_PUSH) + "/" + id;
 
+  std::string requestHeaders = request->headers;
+  OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "REQHEADERS", requestHeaders.c_str());
+
   std::string s = result.toStyledString();
   OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "TransferID", id.c_str());
   OrthancPluginAnswerBuffer(OrthancPlugins::GetGlobalContext(), output, s.c_str(), s.size(), "application/json");
@@ -368,9 +371,7 @@ void StorePush(OrthancPluginRestOutput* output,
   context.GetActivePushTransactions().Store
     (transaction, chunkIndex, request->body, request->bodySize);
 
-  std::string s = "{}";
-  std::string id = "TEST-TRANSFERID-FORTESTING";
-  OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "TransferID", id.c_str());
+  std::string s = "{}";=
   OrthancPluginAnswerBuffer(OrthancPlugins::GetGlobalContext(), output, s.c_str(), s.size(), "application/json");
 }
 
