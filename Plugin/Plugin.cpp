@@ -332,8 +332,8 @@ void CreatePush(OrthancPluginRestOutput* output,
   result[KEY_ID] = id;
   result[KEY_PATH] = std::string(URI_PUSH) + "/" + id;
 
-  std::vector<const char*> headersKeys = request->headersKeys;
-  std::vector<const char*> headersValues = request->headersValues;
+  const char* const* headersKeys = request->headersKeys;
+  const char* const* headersValues = request->headersValues;
   OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "headersKeys", headersKeys.c_str());
   OrthancPluginSetHttpHeader(OrthancPlugins::GetGlobalContext(), output, "headersValues", headersValues.c_str());
 
