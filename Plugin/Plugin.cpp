@@ -368,7 +368,7 @@ void StorePush(OrthancPluginRestOutput* output,
   context.GetActivePushTransactions().Store
     (transaction, chunkIndex, request->body, request->bodySize);
 
-  std::string s = "{}";=
+  std::string s = "{}";
   OrthancPluginAnswerBuffer(OrthancPlugins::GetGlobalContext(), output, s.c_str(), s.size(), "application/json");
 }
 
